@@ -18,6 +18,11 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   background: #ff4d6d;
   color: white;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.music-btn:hover, .proposal-btn:hover {
+  transform: scale(1.05);
 }
 
 /* LAYOUT */
@@ -37,10 +42,6 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   margin: 40px 0;
 }
 
-.middle {
-  align-items: center;
-}
-
 .side {
   display: flex;
   flex-direction: column;
@@ -54,6 +55,11 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   animation: float 3s infinite;
   position: relative;
   z-index: 20;
+  transition: transform 0.2s;
+}
+
+.letter:active {
+  transform: scale(0.9);
 }
 
 .small {
@@ -91,7 +97,7 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   position: relative;
 }
 
-/* BLUR BACK TEXT */
+/* BLUR TEXT */
 .blur {
   position: absolute;
   top: 20px;
@@ -109,7 +115,7 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   position: relative;
 }
 
-/* 🌸 EFFECTS */
+/* EFFECTS */
 .flowers, .sparkles {
   position: fixed;
   width:100%;
@@ -122,6 +128,7 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   position:absolute;
   pointer-events: none;
   animation: fall linear infinite;
+  animation-duration: 8s; /* fallback */
 }
 
 @keyframes fall {
