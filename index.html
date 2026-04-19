@@ -4,8 +4,6 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ff758c">
-
 <title>Sahalam ❤️ Roshni</title>
 
 <link rel="stylesheet" href="style.css">
@@ -15,16 +13,10 @@
 
 <body>
 
-<div class="flowers"></div>
-<div class="overlay"></div>
+<h1>Sahalam ❤️ Roshni 💖</h1>
+<p class="subtitle">Every Letter Holds My Love 💌</p>
 
-<header>
-  <h1>Sahalam ❤️ Roshni 💖</h1>
-  <p class="subtitle">Every Letter Holds My Love 💌</p>
-</header>
-
-<button class="music-btn" id="musicBtn">🎵 Play Music</button>
-<p class="hint">💌 Tap any letter</p>
+<button onclick="toggleMusic()">🎵 Play Music</button>
 
 <div class="layout">
 
@@ -60,14 +52,13 @@
 
 </div>
 
-<button class="proposal-btn" id="proposalBtn">💍 Open Final Letter</button>
+<button onclick="showProposal()">💍 Open Final Letter</button>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
   <div class="paper">
-    <div id="bgText" class="blur"></div>
     <div id="quoteText" class="text"></div>
-    <button id="closePopupBtn">Close 💖</button>
+    <button onclick="closePopup()">Close 💖</button>
   </div>
 </div>
 
@@ -76,17 +67,14 @@
   <div class="paper">
     <div class="text">
       Roshni... 💖<br><br>
-      From the day you came into my life,<br>
-      everything changed...<br><br>
-      I made mistakes... but you stayed...<br><br>
-      Alhamdulillah... you are my peace.<br><br>
-      InshaAllah... will you stay with me forever? 💍❤️
+      Alhamdulillah you are my peace...<br><br>
+      InshaAllah forever ❤️
     </div>
-    <button id="closeProposalBtn">Close 💖</button>
+    <button onclick="closeProposal()">Close 💖</button>
   </div>
 </div>
 
-<audio id="music" loop preload="auto">
+<audio id="music" loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
 
