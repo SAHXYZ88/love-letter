@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+  
 const smallQuotes = [
 "You Came Into My Life When I Was At My Lowest…\nAnd Still You Chose To Stay.",
 "I Hurt You With My Words…\nAnd Broke You Many Times…\nBut You Still Loved Me.",
@@ -22,12 +24,6 @@ I Told You I Would Come Back But Chose The World Over You, And Still You Never L
 Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua, And InshaAllah One Day I Will Hold Your Hand Forever And Spend My Life Making Up For Every Moment I Made You Feel Alone.`;
 
 // SMALL LETTERS (1–14)
-document.addEventListener("DOMContentLoaded", () => {
-
-const smallQuotes = [/* KEEP YOUR SAME QUOTES */];
-
-const bigLoveQuote = `Your big quote`;
-
 document.querySelectorAll(".small").forEach(el => {
   el.addEventListener("click", () => {
     const id = parseInt(el.getAttribute("data-id")) - 1;
@@ -41,6 +37,7 @@ document.querySelector(".big").addEventListener("click", () => {
 
 });
 
+// POPUP
 function openPopup(text){
   if (!text) return;
 
@@ -53,12 +50,14 @@ function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 
+// MUSIC
 function toggleMusic(){
   const music=document.getElementById("music");
   if(music.paused) music.play().catch(()=>{});
   else music.pause();
 }
 
+// PROPOSAL
 function showProposal(){
   document.getElementById("proposalPopup").style.display="flex";
 }
@@ -66,7 +65,7 @@ function closeProposal(){
   document.getElementById("proposalPopup").style.display="none";
 }
 
-// 🌸 FLOWERS
+// FLOWERS
 const flowers=["🌸","🌹","🌷"];
 
 setInterval(()=>{
