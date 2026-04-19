@@ -15,12 +15,17 @@
 
 <body>
 
+<!-- 🌸 EFFECTS -->
 <div class="flowers"></div>
+<div class="overlay"></div>
 
-<h1>Sahalam ❤️ Roshni 💖</h1>
-<p class="subtitle">Every Letter Holds My Love 💌</p>
+<header>
+  <h1>Sahalam ❤️ Roshni 💖</h1>
+  <p class="subtitle">Every Letter Holds My Love 💌</p>
+</header>
 
-<button class="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
+<button class="music-btn" id="musicBtn">🎵 Play Music</button>
+<p class="hint">💌 Tap any letter</p>
 
 <div class="layout">
 
@@ -56,18 +61,18 @@
 
 </div>
 
-<button class="proposal-btn" onclick="showProposal()">💍 Open Final Letter</button>
+<button class="proposal-btn" id="proposalBtn">💍 Open Final Letter</button>
 
-<!-- 💌 POPUP -->
+<!-- POPUP -->
 <div class="popup" id="popup">
   <div class="paper">
     <div id="bgText" class="blur"></div>
     <div id="quoteText" class="text"></div>
-    <button onclick="closePopup()">Close 💖</button>
+    <button id="closePopupBtn">Close 💖</button>
   </div>
 </div>
 
-<!-- 💍 FINAL -->
+<!-- FINAL -->
 <div class="popup" id="proposalPopup">
   <div class="paper">
     <div class="text">
@@ -78,7 +83,7 @@
       Alhamdulillah... you are my peace.<br><br>
       InshaAllah... will you stay with me forever? 💍❤️
     </div>
-    <button onclick="closeProposal()">Close 💖</button>
+    <button id="closeProposalBtn">Close 💖</button>
   </div>
 </div>
 
