@@ -17,7 +17,11 @@ const smallQuotes = [
 "InshaAllah…\nOne Day I’ll Hold You Close…Forever."
 ];
 
-const bigLoveQuote = `You Came Into My Life When I Was At My Lowest, When I Was Broken And Lost...`;
+const bigLoveQuote = `You Came Into My Life When I Was At My Lowest, When I Was Broken And Lost, And Even Though I Didn’t Treat You The Way You Deserved, You Still Stayed By My Side… Many Times I Shouted At You Out Of Anger, Ignored You, And When You Only Asked For A Little Time, I Failed To Give Even That…
+
+I Told You I Would Come Back But Chose The World Over You, And Still You Never Left, Even When We Stopped Talking For Days, You Remembered Every Single Day And Forgave Me Every Time I Returned…
+
+Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua, And InshaAllah One Day I Will Hold Your Hand Forever And Spend My Life Making Up For Every Moment I Made You Feel Alone.`;
 
 document.querySelectorAll(".small").forEach(el => {
   el.addEventListener("click", () => {
