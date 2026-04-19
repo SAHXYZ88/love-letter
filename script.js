@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
+
 const smallQuotes = [
 "You Came Into My Life When I Was At My Lowest…\nAnd Still You Chose To Stay.",
 "I Hurt You With My Words…\nAnd Broke You Many Times…\nBut You Still Loved Me.",
@@ -17,51 +17,62 @@ const smallQuotes = [
 "InshaAllah…\nOne Day I’ll Hold You Close…Forever."
 ];
 
-const bigLoveQuote = `You Came Into My Life When I Was At My Lowest, When I Was Broken And Lost, And Even Though I Didn’t Treat You The Way You Deserved, You Still Stayed By My Side…
+const bigLoveQuote = `You Came Into My Life When I Was At My Lowest, When I Was Broken And Lost...`;
 
-I Told You I Would Come Back But Chose The World Over You, And Still You Never Left…
+document.querySelectorAll(".small").forEach(el => {
+  el.addEventListener("click", () => {
+    const id = parseInt(el.getAttribute("data-id")) - 1;
+    openPopup(smallQuotes[id]);
+  });
+});
 
-Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua…`;
-
-/* 🔥 EVENT DELEGATION (MOBILE SAFE) */
-document.body.addEventListener("click", function(e){
-
-  const letter = e.target.closest(".letter");
-  if (!letter) return;
-
-  /* SMALL */
-  if (letter.classList.contains("small")) {
-    const id = parseInt(letter.dataset.id) - 1;
-    document.getElementById("popup").style.display = "flex";
-    document.getElementById("quoteText").innerText = smallQuotes[id];
-  }
-
-  /* BIG */
-  if (letter.classList.contains("big")) {
-    document.getElementById("popup").style.display = "flex";
-    document.getElementById("quoteText").innerText = bigQuote;
-  }
-
+document.querySelector(".big").addEventListener("click", () => {
+  openPopup(bigLoveQuote);
 });
 
 });
 
-/* popup */
+// POPUP
+function openPopup(text){
+  if (!text) return;
+
+  const popup = document.getElementById("popup");
+  popup.style.display = "flex";
+
+  const formatted = text.replace(/\n/g,"<br>");
+
+  document.getElementById("quoteText").innerHTML = formatted;
+  document.getElementById("bgText").innerHTML = formatted; // FIXED
+}
+
 function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 
-/* proposal */
+// MUSIC
+function toggleMusic(){
+  const music=document.getElementById("music");
+  if(music.paused) music.play().catch(()=>{});
+  else music.pause();
+}
+
+// PROPOSAL
 function showProposal(){
   document.getElementById("proposalPopup").style.display="flex";
 }
-
 function closeProposal(){
   document.getElementById("proposalPopup").style.display="none";
 }
 
-/* music */
-function toggleMusic(){
-  const m=document.getElementById("music");
-  m.paused ? m.play() : m.pause();
-}
+// FLOWERS
+const flowers=["🌸","🌹","🌷"];
+
+setInterval(()=>{
+  let f=document.createElement("div");
+  f.className="flower";
+  f.innerText=flowers[Math.floor(Math.random()*flowers.length)];
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=(6+Math.random()*4)+"s";
+  document.querySelector(".flowers").appendChild(f);
+  setTimeout(()=>f.remove(),10000);
+},700);
