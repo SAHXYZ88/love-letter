@@ -25,59 +25,55 @@ Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are
 
 // SMALL LETTERS (1–14)
 document.querySelectorAll(".small").forEach(el => {
-  el.addEventListener("click", () => {
+  el.addEventListener("click", (e) => {
     const id = parseInt(el.getAttribute("data-id")) - 1;
     openPopup(smallQuotes[id]);
+    createHearts(e.clientX, e.clientY);
   });
 });
 
-document.querySelector(".big").addEventListener("click", () => {
+document.querySelector(".big").addEventListener("click", (e) => {
   openPopup(bigLoveQuote);
+  createHearts(e.clientX, e.clientY);
 });
 
 });
 
-// POPUP
+/* POPUP */
 function openPopup(text){
-  if (!text) return;
-
-  const popup = document.getElementById("popup");
-  popup.style.display = "flex";
-
-  const formatted = text.replace(/\n/g,"<br>");
-
-  document.getElementById("quoteText").innerHTML = formatted;
-  document.getElementById("bgText").innerHTML = formatted; // FIXED
+  document.getElementById("popup").style.display="flex";
+  document.getElementById("quoteText").innerHTML=text.replace(/\n/g,"<br>");
 }
 
 function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 
-// MUSIC
-function toggleMusic(){
-  const music=document.getElementById("music");
-  if(music.paused) music.play().catch(()=>{});
-  else music.pause();
+/* HEART BURST */
+function createHearts(x,y){
+  for(let i=0;i<6;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerText="💖";
+    h.style.left=x+"px";
+    h.style.top=y+"px";
+    h.style.setProperty("--x",(Math.random()*100-50)+"px");
+    h.style.setProperty("--y",(Math.random()*-120)+"px");
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1000);
+  }
 }
 
-// PROPOSAL
+/* MUSIC */
+function toggleMusic(){
+  const m=document.getElementById("music");
+  m.paused ? m.play() : m.pause();
+}
+
+/* PROPOSAL */
 function showProposal(){
   document.getElementById("proposalPopup").style.display="flex";
 }
 function closeProposal(){
   document.getElementById("proposalPopup").style.display="none";
 }
-
-// FLOWERS
-const flowers=["🌸","🌹","🌷"];
-
-setInterval(()=>{
-  let f=document.createElement("div");
-  f.className="flower";
-  f.innerText=flowers[Math.floor(Math.random()*flowers.length)];
-  f.style.left=Math.random()*100+"vw";
-  f.style.animationDuration=(6+Math.random()*4)+"s";
-  document.querySelector(".flowers").appendChild(f);
-  setTimeout(()=>f.remove(),10000);
-},700);
