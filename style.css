@@ -5,7 +5,7 @@ body {
   color:white;
 }
 
-/* LAYOUT */
+/* layout */
 .layout { max-width:600px; margin:auto; }
 
 .row {
@@ -22,18 +22,20 @@ body {
   height:200px;
 }
 
-/* LETTER */
+/* letters */
 .letter {
-  cursor:pointer;
   font-size:45px;
+  cursor:pointer;
+  user-select:none;
 }
 
 .big { font-size:120px; }
 
-/* POPUP */
+/* popup */
 .popup {
   position:fixed;
   top:0;
+  left:0;
   width:100%;
   height:100%;
   display:none;
@@ -44,17 +46,14 @@ body {
 
 .paper {
   background:white;
+  color:black;
   padding:20px;
   border-radius:10px;
   max-width:350px;
 }
 
-.text {
-  color:black;
-}
-
-/* MOBILE */
+/* mobile */
 @media(max-width:600px){
-  .letter { font-size:28px; }
+  .letter { font-size:30px; }
   .big { font-size:80px; }
 }
