@@ -41,9 +41,13 @@ document.querySelector(".big").addEventListener("click", () => {
 function openPopup(text){
   if (!text) return;
 
-  document.getElementById("popup").style.display="flex";
-  const formatted=text.replace(/\n/g,"<br>");
-  document.getElementById("quoteText").innerHTML=formatted;
+  const popup = document.getElementById("popup");
+  popup.style.display = "flex";
+
+  const formatted = text.replace(/\n/g,"<br>");
+
+  document.getElementById("quoteText").innerHTML = formatted;
+  document.getElementById("bgText").innerHTML = formatted; // FIXED
 }
 
 function closePopup(){
