@@ -25,103 +25,72 @@ I Told You I Would Come Back But Chose The World Over You, And Still You Never L
 Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua…`;
 
 /* EVENTS */
+document.getElementById("musicBtn").onclick = toggleMusic;
+document.getElementById("proposalBtn").onclick = showProposal;
+document.getElementById("closePopupBtn").onclick = closePopup;
+document.getElementById("closeProposalBtn").onclick = closeProposal;
+
+/* LETTER EVENTS */
 document.querySelectorAll(".small").forEach(el=>{
   el.addEventListener("click",(e)=>{
     const id = parseInt(el.dataset.id)-1;
 
     opened.add(id);
-
     openPopup(smallQuotes[id]);
 
     createHearts(e.clientX,e.clientY);
 
-    checkUnlock();
+    if(opened.size===14){
+      document.getElementById("proposalBtn").innerText="💖 Open Your Forever 💖";
+    }
   });
 });
 
-document.querySelector(".big").addEventListener("click",(e)=>{
+document.querySelector(".big").onclick = e=>{
   openPopup(bigLoveQuote);
   createHearts(e.clientX,e.clientY);
-});
+};
 
-/* 🔥 CLEAN POPUP */
+/* POPUP */
 function openPopup(text){
-  const popup = document.getElementById("popup");
-  const main = document.getElementById("quoteText");
-  const bg = document.getElementById("bgText");
-
-  popup.style.display = "flex";
-
-  const formatted = text.replace(/\n/g,"<br>");
-
-  main.innerHTML = formatted;
-  bg.innerHTML = formatted;   // ✨ blur background text
+  document.getElementById("popup").style.display="flex";
+  document.getElementById("quoteText").innerHTML=text.replace(/\n/g,"<br>");
 }
 
 function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 
-/* 🔐 UNLOCK */
-function checkUnlock(){
-  if(opened.size===14){
-    let btn=document.querySelector(".proposal-btn");
-    btn.innerText="💖 Open Your Forever 💖";
-    btn.classList.add("unlocked");
-  }
-}
-
-/* 💍 PROPOSAL */
+/* PROPOSAL */
 function showProposal(){
   if(opened.size<14){
     alert("Open all love letters first 💌");
     return;
   }
-
-  document.body.style.filter="brightness(0.7)";
   document.getElementById("proposalPopup").style.display="flex";
 }
 
 function closeProposal(){
-  document.body.style.filter="none";
   document.getElementById("proposalPopup").style.display="none";
 }
 
-/* 💖 HEART BURST */
+/* HEARTS */
 function createHearts(x,y){
-  for(let i=0;i<6;i++){
+  for(let i=0;i<5;i++){
     let h=document.createElement("div");
     h.className="heart";
     h.innerText="💖";
-
     h.style.left=x+"px";
     h.style.top=y+"px";
-
     h.style.setProperty("--x",(Math.random()*100-50)+"px");
     h.style.setProperty("--y",(Math.random()*-120)+"px");
-
     document.body.appendChild(h);
-
     setTimeout(()=>h.remove(),1000);
   }
 }
 
-/* 🎵 MUSIC */
+/* MUSIC */
 function toggleMusic(){
   let m=document.getElementById("music");
-
-  if(m.paused){
-    m.volume=0;
-    m.play();
-
-    let v=0;
-    let fade=setInterval(()=>{
-      v+=0.05;
-      m.volume=v;
-      if(v>=1) clearInterval(fade);
-    },100);
-
-  } else {
-    m.pause();
-  }
+  m.paused ? m.play() : m.pause();
 }
