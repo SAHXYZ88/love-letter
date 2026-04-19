@@ -22,6 +22,12 @@ I Told You I Would Come Back But Chose The World Over You, And Still You Never L
 Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua, And InshaAllah One Day I Will Hold Your Hand Forever And Spend My Life Making Up For Every Moment I Made You Feel Alone.`;
 
 // SMALL LETTERS (1–14)
+document.addEventListener("DOMContentLoaded", () => {
+
+const smallQuotes = [ /* KEEP YOUR SAME QUOTES */ ];
+
+const bigLoveQuote = `You Came Into My Life When I Was At My Lowest...`;
+
 document.querySelectorAll(".small").forEach(el=>{
   el.onclick=()=>{
     const id=parseInt(el.getAttribute("data-id"))-1;
@@ -31,8 +37,14 @@ document.querySelectorAll(".small").forEach(el=>{
 
 document.querySelector(".big").onclick=()=>openPopup(bigLoveQuote);
 
+});
+
+// POPUP
 function openPopup(text){
+  if (!text) return;
+
   document.getElementById("popup").style.display="flex";
+
   const formatted=text.replace(/\n/g,"<br>");
   document.getElementById("quoteText").innerHTML=formatted;
   document.getElementById("bgText").innerHTML=formatted;
@@ -45,7 +57,7 @@ function closePopup(){
 // MUSIC
 function toggleMusic(){
   const music=document.getElementById("music");
-  if(music.paused) music.play();
+  if(music.paused) music.play().catch(()=>{});
   else music.pause();
 }
 
@@ -57,14 +69,18 @@ function closeProposal(){
   document.getElementById("proposalPopup").style.display="none";
 }
 
-// FLOWERS
+// FLOWERS (OPTIMIZED)
 const flowers=["🌸","🌹","🌷"];
+
 setInterval(()=>{
   let f=document.createElement("div");
   f.className="flower";
-  f.innerText=flowers[Math.random()*flowers.length|0];
+  f.innerText=flowers[Math.floor(Math.random()*flowers.length)];
+
   f.style.left=Math.random()*100+"vw";
-  f.style.animationDuration=(5+Math.random()*5)+"s";
+  f.style.animationDuration=(6+Math.random()*4)+"s";
+
   document.querySelector(".flowers").appendChild(f);
+
   setTimeout(()=>f.remove(),10000);
-},400);
+},700);
