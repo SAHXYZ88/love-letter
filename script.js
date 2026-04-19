@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-let opened = new Set();
   
 const smallQuotes = [
 "You Came Into My Life When I Was At My Lowest…\nAnd Still You Chose To Stay.",
@@ -25,61 +23,35 @@ I Told You I Would Come Back But Chose The World Over You, And Still You Never L
 
 Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua…`;
 
-/* SAFE OPEN FUNCTION */
-function handleOpen(el) {
-  const id = parseInt(el.dataset.id) - 1;
-  if (!smallQuotes[id]) return;
+/* 🔥 EVENT DELEGATION (MOBILE SAFE) */
+document.body.addEventListener("click", function(e){
 
-  opened.add(id);
-  openPopup(smallQuotes[id]);
-}
+  const letter = e.target.closest(".letter");
+  if (!letter) return;
 
-/* SMALL LETTERS */
-document.querySelectorAll(".small").forEach(el => {
+  /* SMALL */
+  if (letter.classList.contains("small")) {
+    const id = parseInt(letter.dataset.id) - 1;
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("quoteText").innerText = smallQuotes[id];
+  }
 
-  /* CLICK (PC) */
-  el.addEventListener("click", () => handleOpen(el));
-
-  /* TOUCH (MOBILE) */
-  el.addEventListener("touchstart", (e) => {
-    e.preventDefault();   // prevents ghost click
-    handleOpen(el);
-  }, { passive: false });
+  /* BIG */
+  if (letter.classList.contains("big")) {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("quoteText").innerText = bigQuote;
+  }
 
 });
 
-/* BIG LETTER */
-const big = document.querySelector(".big");
-
-if (big) {
-
-  big.addEventListener("click", () => {
-    openPopup(bigQuote);
-  });
-
-  big.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    openPopup(bigQuote);
-  }, { passive: false });
-
-}
-
 });
 
-/* POPUP */
-function openPopup(text){
-  const popup = document.getElementById("popup");
-  const quote = document.getElementById("quoteText");
-
-  popup.style.display = "flex";
-  quote.innerText = text;
-}
-
+/* popup */
 function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 
-/* PROPOSAL */
+/* proposal */
 function showProposal(){
   document.getElementById("proposalPopup").style.display="flex";
 }
@@ -88,8 +60,8 @@ function closeProposal(){
   document.getElementById("proposalPopup").style.display="none";
 }
 
-/* MUSIC */
+/* music */
 function toggleMusic(){
-  const m = document.getElementById("music");
+  const m=document.getElementById("music");
   m.paused ? m.play() : m.pause();
 }
