@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff758c">
+
 <title>Sahalam ❤️ Roshni</title>
 
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <!-- 🌸 Effects -->
 <div class="flowers"></div>
-<div class="sparkles"></div>
 
 <h1>Sahalam ❤️ Roshni 💖</h1>
 <p class="subtitle">Every Letter Holds My Love 💌</p>
 
-<button class="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
+<!-- 🎵 MUSIC -->
+<button class="music-btn" type="button" onclick="toggleMusic()">🎵 Play Music</button>
 
 <div class="layout">
 
@@ -31,7 +35,7 @@
   </div>
 
   <!-- MIDDLE -->
-  <div class="row middle">
+  <div class="row">
     <div class="side">
       <div class="letter small" data-id="5">💌</div>
       <div class="letter small" data-id="6">💌</div>
@@ -57,18 +61,19 @@
 
 </div>
 
-<button class="proposal-btn" onclick="showProposal()">💍 Open Final Letter</button>
+<!-- 💍 PROPOSAL BUTTON -->
+<button class="proposal-btn" type="button" onclick="showProposal()">💍 Open Final Letter</button>
 
-<!-- POPUP -->
+<!-- 💌 QUOTE POPUP -->
 <div class="popup" id="popup">
   <div class="paper">
     <div id="bgText" class="blur"></div>
     <div id="quoteText" class="text"></div>
-    <button onclick="closePopup()">Close 💖</button>
+    <button type="button" onclick="closePopup()">Close 💖</button>
   </div>
 </div>
 
-<!-- FINAL -->
+<!-- 💍 FINAL POPUP -->
 <div class="popup" id="proposalPopup">
   <div class="paper">
     <div class="text">
@@ -79,15 +84,17 @@
       Alhamdulillah... you are my peace.<br><br>
       InshaAllah... will you stay with me forever? 💍❤️
     </div>
-    <button onclick="closeProposal()">Close 💖</button>
+    <button type="button" onclick="closeProposal()">Close 💖</button>
   </div>
 </div>
 
-<audio id="music" loop>
+<!-- 🎵 AUDIO -->
+<audio id="music" loop preload="auto">
   <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<script src="script.js"></script>
+<!-- SCRIPT -->
+<script src="script.js" defer></script>
 
 </body>
 </html>
