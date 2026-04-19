@@ -46,9 +46,12 @@ h1 {
   height: 260px;
 }
 
+/* LETTERS */
 .letter {
   cursor: pointer;
   animation: float 3s infinite;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
 .small {
@@ -118,7 +121,7 @@ h1 {
   100% { transform:translateY(110vh); }
 }
 
-/* 📱 MOBILE */
+/* MOBILE */
 @media (max-width: 600px) {
 
   .layout { width: 95%; }
