@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  
+let opened = new Set();
+
 const smallQuotes = [
 "You Came Into My Life When I Was At My Lowest…\nAnd Still You Chose To Stay.",
 "I Hurt You With My Words…\nAnd Broke You Many Times…\nBut You Still Loved Me.",
@@ -23,57 +23,102 @@ I Told You I Would Come Back But Chose The World Over You, And Still You Never L
 
 Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua, And InshaAllah One Day I Will Hold Your Hand Forever And Spend My Life Making Up For Every Moment I Made You Feel Alone.`;
 
-// SMALL LETTERS (1–14)
+document.addEventListener("DOMContentLoaded", () => {
+
 document.querySelectorAll(".small").forEach(el => {
   el.addEventListener("click", (e) => {
+
     const id = parseInt(el.getAttribute("data-id")) - 1;
-    openPopup(smallQuotes[id]);
+
+    opened.add(id);
+
+    typeWriter(smallQuotes[id]);
+
     createHearts(e.clientX, e.clientY);
+
+    checkUnlock();
   });
 });
 
 document.querySelector(".big").addEventListener("click", (e) => {
-  openPopup(bigLoveQuote);
+  typeWriter(bigLoveQuote);
   createHearts(e.clientX, e.clientY);
 });
 
 });
 
-/* POPUP */
-function openPopup(text){
-  document.getElementById("popup").style.display="flex";
-  document.getElementById("quoteText").innerHTML=text.replace(/\n/g,"<br>");
+/* ✍️ TYPEWRITER */
+function typeWriter(text) {
+  document.getElementById("popup").style.display = "flex";
+
+  let i = 0;
+  const speed = 25;
+  const target = document.getElementById("quoteText");
+
+  target.innerHTML = "";
+
+  function typing() {
+    if (i < text.length) {
+      if (text[i] === "\n") {
+        target.innerHTML += "<br>";
+      } else {
+        target.innerHTML += text[i];
+      }
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+
+  typing();
 }
 
+/* 🔐 UNLOCK */
+function checkUnlock() {
+  if (opened.size === 14) {
+    document.querySelector(".proposal-btn").innerText = "💖 Open Your Forever 💖";
+    document.querySelector(".proposal-btn").style.background = "#ff1744";
+  }
+}
+
+/* POPUP */
 function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 
-/* HEART BURST */
+/* 💍 PROPOSAL */
+function showProposal(){
+  if (opened.size < 14) {
+    alert("Open all love letters first 💌");
+    return;
+  }
+  document.getElementById("proposalPopup").style.display="flex";
+}
+
+function closeProposal(){
+  document.getElementById("proposalPopup").style.display="none";
+}
+
+/* 💥 HEART BURST */
 function createHearts(x,y){
   for(let i=0;i<6;i++){
     let h=document.createElement("div");
     h.className="heart";
     h.innerText="💖";
+
     h.style.left=x+"px";
     h.style.top=y+"px";
+
     h.style.setProperty("--x",(Math.random()*100-50)+"px");
     h.style.setProperty("--y",(Math.random()*-120)+"px");
+
     document.body.appendChild(h);
+
     setTimeout(()=>h.remove(),1000);
   }
 }
 
-/* MUSIC */
+/* 🎵 MUSIC */
 function toggleMusic(){
   const m=document.getElementById("music");
   m.paused ? m.play() : m.pause();
-}
-
-/* PROPOSAL */
-function showProposal(){
-  document.getElementById("proposalPopup").style.display="flex";
-}
-function closeProposal(){
-  document.getElementById("proposalPopup").style.display="none";
 }
