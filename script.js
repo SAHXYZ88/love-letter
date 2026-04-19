@@ -25,24 +25,54 @@ I Told You I Would Come Back But Chose The World Over You, And Still You Never L
 
 Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua…`;
 
-document.querySelectorAll(".small").forEach(el=>{
-  el.addEventListener("click", ()=>{
-    const id = parseInt(el.dataset.id)-1;
-    opened.add(id);
-    openPopup(smallQuotes[id]);
-  });
+/* SAFE OPEN FUNCTION */
+function handleOpen(el) {
+  const id = parseInt(el.dataset.id) - 1;
+  if (!smallQuotes[id]) return;
+
+  opened.add(id);
+  openPopup(smallQuotes[id]);
+}
+
+/* SMALL LETTERS */
+document.querySelectorAll(".small").forEach(el => {
+
+  /* CLICK (PC) */
+  el.addEventListener("click", () => handleOpen(el));
+
+  /* TOUCH (MOBILE) */
+  el.addEventListener("touchstart", (e) => {
+    e.preventDefault();   // prevents ghost click
+    handleOpen(el);
+  }, { passive: false });
+
 });
 
-document.querySelector(".big").addEventListener("click", ()=>{
-  openPopup(bigQuote);
-});
+/* BIG LETTER */
+const big = document.querySelector(".big");
+
+if (big) {
+
+  big.addEventListener("click", () => {
+    openPopup(bigQuote);
+  });
+
+  big.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    openPopup(bigQuote);
+  }, { passive: false });
+
+}
 
 });
 
 /* POPUP */
 function openPopup(text){
-  document.getElementById("popup").style.display="flex";
-  document.getElementById("quoteText").innerText=text;
+  const popup = document.getElementById("popup");
+  const quote = document.getElementById("quoteText");
+
+  popup.style.display = "flex";
+  quote.innerText = text;
 }
 
 function closePopup(){
@@ -60,6 +90,6 @@ function closeProposal(){
 
 /* MUSIC */
 function toggleMusic(){
-  const m=document.getElementById("music");
+  const m = document.getElementById("music");
   m.paused ? m.play() : m.pause();
 }
