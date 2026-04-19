@@ -31,28 +31,25 @@ document.querySelectorAll(".small").forEach(el=>{
 
 document.querySelector(".big").onclick=()=>openPopup(bigLoveQuote);
 
-// ✍️ TYPING
 function openPopup(text){
   document.getElementById("popup").style.display="flex";
   const formatted=text.replace(/\n/g,"<br>");
-  const el=document.getElementById("quoteText");
-  el.innerHTML="";
-  let i=0;
-  function type(){
-    if(i<formatted.length){
-      el.innerHTML+=formatted.charAt(i);
-      i++;
-      setTimeout(type,20);
-    }
-  }
-  type();
+  document.getElementById("quoteText").innerHTML=formatted;
+  document.getElementById("bgText").innerHTML=formatted;
 }
 
 function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 
-// 💍 PROPOSAL
+// MUSIC
+function toggleMusic(){
+  const music=document.getElementById("music");
+  if(music.paused) music.play();
+  else music.pause();
+}
+
+// PROPOSAL
 function showProposal(){
   document.getElementById("proposalPopup").style.display="flex";
 }
@@ -60,7 +57,7 @@ function closeProposal(){
   document.getElementById("proposalPopup").style.display="none";
 }
 
-// 🌸 EFFECTS
+// FLOWERS
 const flowers=["🌸","🌹","🌷"];
 setInterval(()=>{
   let f=document.createElement("div");
