@@ -22,50 +22,43 @@ I Told You I Would Come Back But Chose The World Over You, And Still You Never L
 Alhamdulillah Allah Sent You As A Blessing I Didn’t Deserve, And Today You Are My Peace, My Happiness, My Dua, And InshaAllah One Day I Will Hold Your Hand Forever And Spend My Life Making Up For Every Moment I Made You Feel Alone.`;
 
 // SMALL LETTERS (1–14)
-document.querySelectorAll(".small").forEach(el => {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const handler = () => {
+const smallQuotes = [/* KEEP YOUR SAME QUOTES */];
+
+const bigLoveQuote = `Your big quote`;
+
+document.querySelectorAll(".small").forEach(el => {
+  el.addEventListener("click", () => {
     const id = parseInt(el.getAttribute("data-id")) - 1;
     openPopup(smallQuotes[id]);
-  };
+  });
+});
 
-  el.addEventListener("click", handler);
-  el.addEventListener("touchstart", handler);
+document.querySelector(".big").addEventListener("click", () => {
+  openPopup(bigLoveQuote);
+});
 
 });
 
-const big = document.querySelector(".big");
-
-const bigHandler = () => openPopup(bigLoveQuote);
-
-big.addEventListener("click", bigHandler);
-big.addEventListener("touchstart", bigHandler);
-
-});
-
-// POPUP
 function openPopup(text){
   if (!text) return;
 
   document.getElementById("popup").style.display="flex";
-
   const formatted=text.replace(/\n/g,"<br>");
   document.getElementById("quoteText").innerHTML=formatted;
-  document.getElementById("bgText").innerHTML=formatted;
 }
 
 function closePopup(){
   document.getElementById("popup").style.display="none";
 }
 
-// MUSIC
 function toggleMusic(){
   const music=document.getElementById("music");
   if(music.paused) music.play().catch(()=>{});
   else music.pause();
 }
 
-// PROPOSAL
 function showProposal(){
   document.getElementById("proposalPopup").style.display="flex";
 }
@@ -73,7 +66,7 @@ function closeProposal(){
   document.getElementById("proposalPopup").style.display="none";
 }
 
-// FLOWERS (SMOOTH)
+// 🌸 FLOWERS
 const flowers=["🌸","🌹","🌷"];
 
 setInterval(()=>{
