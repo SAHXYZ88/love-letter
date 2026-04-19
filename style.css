@@ -24,6 +24,7 @@ h1 {
   background: #ff4d6d;
   color: white;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,77,109,0.6);
 }
 
 /* LAYOUT */
@@ -52,6 +53,11 @@ h1 {
   animation: float 3s infinite;
   pointer-events: auto;
   touch-action: manipulation;
+  transition: transform 0.3s ease;
+}
+
+.letter:hover {
+  transform: scale(1.1);
 }
 
 .small {
@@ -79,34 +85,39 @@ h1 {
   justify-content:center;
   align-items:center;
   background:rgba(0,0,0,0.7);
+  padding: 15px;
 }
 
+/* 🔥 FIXED PAPER */
 .paper {
-  background: linear-gradient(#fffdf5, #fdf3d8);
-  padding: 25px;
-  width: 90%;
-  max-width: 420px;
+  background: linear-gradient(#fffdf5,#fdf3d8);
+  padding:30px;
+  width:90%;
+  max-width:420px;
 
-  max-height: 80vh;              
-  overflow-y: auto;             
-  -webkit-overflow-scrolling: touch; 
+  max-height: 80vh;              /* ✅ FIX */
+  overflow-y: auto;              /* ✅ FIX */
+  -webkit-overflow-scrolling: touch;
 
-  border-radius: 15px;
-  position: relative;
+  border-radius:15px;
+  position:relative;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* optional but looks better */
+  box-shadow: 0 0 25px rgba(255,200,150,0.6); /* ✨ glow effect */
 }
 
+/* BLUR BACK TEXT */
 .blur {
   position:absolute;
-  opacity:0.2;
-  filter:blur(2px);
+  opacity:0.15;
+  filter:blur(3px);
+  pointer-events:none;
 }
 
+/* TEXT */
 .text {
-  color: black;
-  font-size: 16px;
-  line-height: 1.8;
+  color:black;
+  font-size:18px;
+  line-height:1.7;
   word-wrap: break-word;
 }
 
@@ -146,4 +157,13 @@ h1 {
   .big { font-size: 85px; }
 
   h1 { font-size: 1.7rem; }
+
+  .paper {
+    padding: 20px;
+    max-height: 85vh;
+  }
+
+  .text {
+    font-size: 16px;
+  }
 }
