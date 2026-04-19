@@ -4,10 +4,24 @@ body {
   background: linear-gradient(135deg,#ff758c,#fad0c4);
   color: white;
   overflow-x: hidden;
+
+  /* smooth entry */
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
 }
 
-h1 { margin-top: 40px; font-size: 2.2rem; }
-.subtitle { margin-bottom: 20px; }
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+h1 {
+  margin-top: 40px;
+  font-size: 2.2rem;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+}
 
 /* BUTTONS */
 .music-btn, .proposal-btn {
@@ -49,7 +63,7 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   height: 260px;
 }
 
-/* LETTERS */
+/* LETTER BASE */
 .letter {
   cursor: pointer;
   animation: float 3s infinite;
@@ -62,18 +76,45 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   transform: scale(0.9);
 }
 
+/* 🔥 SMALL LETTER GLOW (MOBILE FIX) */
 .small {
   font-size: 45px;
+  text-shadow:
+    0 0 10px #ff9aa2,
+    0 0 20px #ff6f91,
+    0 0 30px #ff3d6b;
 }
 
+/* 🔥 BIG LETTER (CENTER FOCUS) */
 .big {
   font-size: 150px;
+
+  text-shadow:
+    0 0 15px #ffb3c6,
+    0 0 30px #ff4d6d,
+    0 0 50px #ff1744;
+
+  animation: float 3s infinite, glow 2s ease-in-out infinite alternate;
 }
 
-/* FLOAT */
+/* FLOAT ANIMATION */
 @keyframes float {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+/* 🔥 GLOW ANIMATION */
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 10px #ff9aa2,
+      0 0 20px #ff6f91;
+  }
+  to {
+    text-shadow:
+      0 0 20px #ff4d6d,
+      0 0 40px #ff1744;
+  }
 }
 
 /* POPUP */
@@ -88,6 +129,7 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   z-index: 100;
 }
 
+/* PAPER */
 .paper {
   background: linear-gradient(#fffdf5,#fdf3d8);
   padding:30px;
@@ -97,7 +139,7 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   position: relative;
 }
 
-/* BLUR TEXT */
+/* BLUR BACK TEXT */
 .blur {
   position: absolute;
   top: 20px;
@@ -115,7 +157,7 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   position: relative;
 }
 
-/* EFFECTS */
+/* 🌸 EFFECTS */
 .flowers, .sparkles {
   position: fixed;
   width:100%;
@@ -128,19 +170,37 @@ h1 { margin-top: 40px; font-size: 2.2rem; }
   position:absolute;
   pointer-events: none;
   animation: fall linear infinite;
-  animation-duration: 8s; /* fallback */
+  animation-duration: 8s;
 }
 
+/* FALL */
 @keyframes fall {
   0% { transform:translateY(-50px); }
   100% { transform:translateY(110vh); }
 }
 
-/* MOBILE */
+/* 📱 MOBILE OPTIMIZATION */
 @media (max-width: 600px) {
-  .row { gap: 25px; }
-  .side { height: 180px; }
-  .small { font-size: 28px; }
-  .big { font-size: 90px; }
-  h1 { font-size: 1.6rem; }
+
+  .row {
+    gap: 25px;
+    margin: 25px 0;
+  }
+
+  .side {
+    height: 180px;
+  }
+
+  .small {
+    font-size: 28px;
+  }
+
+  .big {
+    font-size: 90px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
 }
