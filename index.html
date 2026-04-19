@@ -15,18 +15,15 @@
 
 <body>
 
-<!-- 🌸 Effects -->
 <div class="flowers"></div>
 
 <h1>Sahalam ❤️ Roshni 💖</h1>
 <p class="subtitle">Every Letter Holds My Love 💌</p>
 
-<!-- 🎵 MUSIC -->
-<button class="music-btn" type="button" onclick="toggleMusic()">🎵 Play Music</button>
+<button class="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
 
 <div class="layout">
 
-  <!-- TOP -->
   <div class="row">
     <div class="letter small" data-id="1">💌</div>
     <div class="letter small" data-id="2">💌</div>
@@ -34,7 +31,6 @@
     <div class="letter small" data-id="4">💌</div>
   </div>
 
-  <!-- MIDDLE -->
   <div class="row">
     <div class="side">
       <div class="letter small" data-id="5">💌</div>
@@ -51,7 +47,6 @@
     </div>
   </div>
 
-  <!-- BOTTOM -->
   <div class="row">
     <div class="letter small" data-id="11">💌</div>
     <div class="letter small" data-id="12">💌</div>
@@ -61,19 +56,18 @@
 
 </div>
 
-<!-- 💍 PROPOSAL BUTTON -->
-<button class="proposal-btn" type="button" onclick="showProposal()">💍 Open Final Letter</button>
+<button class="proposal-btn" onclick="showProposal()">💍 Open Final Letter</button>
 
-<!-- 💌 QUOTE POPUP -->
+<!-- 💌 POPUP -->
 <div class="popup" id="popup">
   <div class="paper">
     <div id="bgText" class="blur"></div>
     <div id="quoteText" class="text"></div>
-    <button type="button" onclick="closePopup()">Close 💖</button>
+    <button onclick="closePopup()">Close 💖</button>
   </div>
 </div>
 
-<!-- 💍 FINAL POPUP -->
+<!-- 💍 FINAL -->
 <div class="popup" id="proposalPopup">
   <div class="paper">
     <div class="text">
@@ -84,17 +78,15 @@
       Alhamdulillah... you are my peace.<br><br>
       InshaAllah... will you stay with me forever? 💍❤️
     </div>
-    <button type="button" onclick="closeProposal()">Close 💖</button>
+    <button onclick="closeProposal()">Close 💖</button>
   </div>
 </div>
 
-<!-- 🎵 AUDIO -->
 <audio id="music" loop preload="auto">
   <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<!-- SCRIPT -->
-<script src="script.js" defer></script>
+<script src="script.js"></script>
 
 </body>
 </html>
